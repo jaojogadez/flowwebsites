@@ -3,7 +3,8 @@
  * Módulo: navbar.js
  *
  * Responsabilidades:
- *  - Efeito de scroll (classe .scrolled no wrapper)
+ *  - Aparece só após o hero sair do viewport (.visible)
+ *  - Efeito de scroll (.scrolled)
  *  - Toggle do menu hamburger (mobile)
  *  - Fechar menu ao clicar em link mobile
  *  - Highlight do link ativo via IntersectionObserver
@@ -14,7 +15,18 @@ export function initNavbar() {
     const hamburger  = document.getElementById('navbar-hamburger');
     const mobileMenu = document.getElementById('navbar-mobile-menu');
 
-    if (!wrapper || !hamburger || !mobileMenu) return; // guard: elementos ausentes
+    if (!wrapper || !hamburger || !mobileMenu) return;
+
+    /* ── Visibilidade: aparece na metade do hero ── */
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+        const checkNavbarVisibility = () => {
+            const halfHero = heroSection.offsetHeight * 0.5;
+            wrapper.classList.toggle('visible', window.scrollY > halfHero);
+        };
+        window.addEventListener('scroll', checkNavbarVisibility, { passive: true });
+        checkNavbarVisibility(); // checar no load
+    }
 
     /* ── Scroll: adiciona .scrolled após 30px ── */
     window.addEventListener('scroll', () => {
@@ -59,3 +71,4 @@ export function initNavbar() {
         sections.forEach(section => observer.observe(section));
     }
 }
+
