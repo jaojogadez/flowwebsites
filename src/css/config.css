@@ -1,0 +1,71 @@
+/* Flow Web Sites - Design System v1.0
+   Root Variables for Tech-Fintech Aesthetics
+*/
+
+:root {
+    /* --- Cores Primárias --- */
+    --bg-deep: #0b0e14;
+    /* Fundo quase preto (Premium) */
+    --bg-card: rgba(255, 255, 255, 0.03);
+    /* Glassmorphism base */
+
+    --primary-blue: #0062ff;
+    /* Action Blue (CTAs) */
+    --accent-blue: #3b82f6;
+    /* Sky Blue (Gradients/Links) */
+
+    /* --- Tipografia --- */
+    --text-main: #ffffff;
+    /* Títulos e Destaques */
+    --text-muted: #94a3b8;
+    /* Parágrafos e Apoio */
+    --text-dim: #475569;
+    /* Rodapés e Detalhes */
+
+    /* --- Superfícies e Bordas --- */
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    /* --- Efeitos --- */
+    --glass-blur: blur(12px);
+    --shadow-blue: 0 4px 20px rgba(0, 98, 255, 0.3);
+    --glow-radial: radial-gradient(circle at center, rgba(0, 98, 255, 0.15) 0%, transparent 70%);
+
+    /* --- Fontes (Recomendação: Importar no HTML/Google Fonts) --- */
+    --font-display: 'Archivo Black', sans-serif;
+    /* Para Headings */
+    --font-body: 'Inter', sans-serif;
+    /* Para leitura */
+}
+
+/* Reset básico para aplicação do Design System */
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.impact-text {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-blue);
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}

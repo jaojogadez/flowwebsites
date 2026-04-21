@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flow Web Sites – Agência Digital Premium</title>
+    <link rel="shortcut icon" href="src/assets/logos/logo-encurtada.png" type="image/x-icon">
+    <meta name="description" content="Flow Web Sites: criamos sites e aplicações web de alto desempenho com design premium para negócios que querem se destacar." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- CSS Modular (ponto de entrada único) -->
+    <link rel="stylesheet" href="./src/css/index.css" />
+</head>
+
+<body>
+
+    <!-- =============================================
+         NAVBAR – Componente flutuante
+         ============================================= -->
+    <header class="navbar-wrapper" id="navbar">
+        <!-- Desktop Row -->
+        <nav class="navbar" aria-label="Navegação principal">
+
+            <!-- Logo -->
+            <a href="#" class="navbar__logo" id="navbar-logo" aria-label="Flow Web Sites – Voltar ao início">
+                <!-- Desktop: logo completa -->
+                <img
+                    src="./src/assets/logos/logo-cumprida.png"
+                    alt="Flow Web Sites"
+                    class="navbar__logo-img navbar__logo-img--full"
+                    id="logo-full" />
+                <!-- Mobile: logo ícone -->
+                <img
+                    src="./src/assets/logos/logo-encurtada.png"
+                    alt="Flow"
+                    class="navbar__logo-img navbar__logo-img--icon"
+                    id="logo-icon" />
+            </a>
+
+            <!-- Links (desktop) -->
+            <ul class="navbar__nav" role="list">
+                <li><a href="#sobre" class="navbar__nav-link active" id="nav-link-sobre">Sobre</a></li>
+                <li><a href="#servicos" class="navbar__nav-link" id="nav-link-servicos">Serviços</a></li>
+                <li><a href="#portfolio" class="navbar__nav-link" id="nav-link-portfolio">Portfólio</a></li>
+                <li><a href="#depoimentos" class="navbar__nav-link" id="nav-link-depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="navbar__nav-link" id="nav-link-contato">Contato</a></li>
+            </ul>
+
+            <!-- CTAs (desktop) -->
+            <div class="navbar__actions">
+                <a href="#portfolio" class="navbar__btn-ghost" id="navbar-btn-portfolio">Ver Projetos</a>
+                <a href="#contato" class="navbar__btn-primary" id="navbar-btn-contato">Fale Conosco</a>
+            </div>
+
+            <!-- Hamburger (mobile) -->
+            <button
+                class="navbar__hamburger"
+                id="navbar-hamburger"
+                aria-label="Abrir menu de navegação"
+                aria-expanded="false"
+                aria-controls="navbar-mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile menu drawer -->
+        <div class="navbar__mobile-menu" id="navbar-mobile-menu" role="navigation" aria-label="Menu mobile">
+            <a href="#sobre" class="navbar__nav-link active" id="mob-link-sobre">Sobre</a>
+            <a href="#servicos" class="navbar__nav-link" id="mob-link-servicos">Serviços</a>
+            <a href="#portfolio" class="navbar__nav-link" id="mob-link-portfolio">Portfólio</a>
+            <a href="#depoimentos" class="navbar__nav-link" id="mob-link-depoimentos">Depoimentos</a>
+            <a href="#contato" class="navbar__nav-link" id="mob-link-contato">Contato</a>
+            <div class="navbar__actions">
+                <a href="#portfolio" class="navbar__btn-ghost" id="mob-btn-portfolio">Ver Projetos</a>
+                <a href="#contato" class="navbar__btn-primary" id="mob-btn-contato">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Placeholder de conteúdo para testar o scroll -->
+    <main style="padding-top: 120px; min-height: 300vh; display: flex; align-items: flex-start; justify-content: center;">
+        <section style="text-align: center; padding-top: 10vh;">
+            <h1>Bem-vindo à <span style="color: var(--primary-blue);">Flow</span></h1>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Role a página para ver o efeito da navbar.</p>
+        </section>
+    </main>
+
+    <!-- JS Modular (ponto de entrada único) -->
+    <script type="module" src="./src/js/index.js"></script>
+
+</body>
+
+</html>

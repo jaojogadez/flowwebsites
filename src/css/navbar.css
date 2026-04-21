@@ -1,0 +1,272 @@
+/* ============================================
+   Navbar - Flow Web Sites
+   Módulo CSS: navbar.css
+   Depende de: config.css (variáveis globais)
+   ============================================ */
+
+/* --- Wrapper Fixo (Flutuante) --- */
+.navbar-wrapper {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 1200px;
+    z-index: 1000;
+
+    /* Efeito "ilha flutuante" */
+    background: rgba(11, 14, 20, 0.55);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-subtle);
+    border-radius: 9999px; /* Pill shape */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.04);
+
+    transition: top 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Estado ao rolar (mais fechado / escurecido) */
+.navbar-wrapper.scrolled {
+    top: 12px;
+    background: rgba(11, 14, 20, 0.85);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* --- Container interno --- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    gap: 24px;
+}
+
+/* --- Logo --- */
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* Logo: imagens reais */
+.navbar__logo-img {
+    display: block;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* Logo completa — oculta em todos os breakpoints */
+.navbar__logo-img--full {
+    display: none;
+}
+
+/* Logo encurtada — exibida sempre */
+.navbar__logo-img--icon {
+    display: block;
+    height: 40px;
+    width: auto;
+}
+
+/* --- Links de Navegação --- */
+.navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__nav-link {
+    display: inline-block;
+    padding: 8px 16px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: color 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+}
+
+.navbar__nav-link:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar__nav-link.active {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* --- Ações (CTA) --- */
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.navbar__btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 18px;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.navbar__btn-ghost:hover {
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 20px;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-blue);
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar__btn-primary:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.12);
+    box-shadow: 0 6px 28px rgba(0, 98, 255, 0.45);
+}
+
+/* --- Hamburger (Mobile) --- */
+.navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.navbar__hamburger:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+.navbar__hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-muted);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+}
+
+/* Estado aberto do hamburger → ×  */
+.navbar__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.navbar__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Menu Mobile Drawer --- */
+.navbar__mobile-menu {
+    display: none; /* Mostrado via JS */
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 20px 20px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.navbar__mobile-menu.open {
+    display: flex;
+}
+
+.navbar__mobile-menu .navbar__nav-link {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+}
+
+.navbar__mobile-menu .navbar__actions {
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+.navbar__mobile-menu .navbar__btn-ghost,
+.navbar__mobile-menu .navbar__btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    border-radius: var(--radius-md);
+}
+
+/* ============================================
+   Responsividade
+   ============================================ */
+
+/* Tablets / Mobile */
+@media (max-width: 900px) {
+    .navbar__nav {
+        display: none;
+    }
+
+    .navbar__actions {
+        display: none;
+    }
+
+    .navbar__hamburger {
+        display: flex;
+    }
+
+    .navbar-wrapper {
+        border-radius: 24px;
+    }
+
+    .navbar-wrapper.menu-open {
+        border-radius: 20px;
+    }
+
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    .navbar-wrapper {
+        width: calc(100% - 24px);
+        top: 12px;
+    }
+
+    .navbar {
+        padding: 12px 18px;
+    }
+}
