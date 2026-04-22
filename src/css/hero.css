@@ -174,7 +174,8 @@
 .hero__image-wrap {
     position: relative;
     width: 100%;
-    max-width: 860px;
+    padding: 0 40px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -457,7 +458,7 @@
     }
 
     .hero__image { max-height: 62vh; }
-    .hero__image-wrap { max-width: 100%; padding: 0 20px; }
+    .hero__image-wrap { padding: 0 20px; }
 
     .hero__bottom {
         flex-direction: column;

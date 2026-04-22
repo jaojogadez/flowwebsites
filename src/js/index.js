@@ -7,9 +7,11 @@
 import { initNavbar } from './navbar.js';
 import { initScrollVideo } from './scroll-video.js';
 import { initReveal } from './reveal.js';
+import { initContactModal } from './contact-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initScrollVideo();
     initReveal();
+    initContactModal();
 });
