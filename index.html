@@ -182,47 +182,40 @@
 
             </div>
         </section>
+
+        <!-- Degradê de transição hero → próxima seção -->
+        <div class="hero__fade-bottom" aria-hidden="true"></div>
     </main>
 
     <!-- =============================================
-         SEÇÃO DE TESTE – Scroll
+         IMPACT – Potencialização do Negócio
          ============================================= -->
-    <section id="sobre" style="
-        min-height: 100vh;
-        background: #0d1117;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        border-top: 1px solid rgba(255,255,255,0.06);
-        padding: 80px 40px;
-    ">
-        <span style="
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--primary-blue);
-        ">Seção de teste</span>
-        <h2 style="
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 4rem);
-            color: var(--text-main);
-            text-align: center;
-            margin: 0;
-            letter-spacing: -0.02em;
-        ">A navbar apareceu corretamente.</h2>
-        <p style="
-            font-family: var(--font-body);
-            color: var(--text-muted);
-            font-size: 1rem;
-            text-align: center;
-            max-width: 460px;
-            line-height: 1.7;
-            margin: 0;
-        ">Esta seção existe apenas para validar o comportamento de scroll e o aparecimento da navbar após o hero.</p>
+    <section id="impact" class="impact">
+        
+        <!-- Showcase contendo o Video e as Copys Flutuantes -->
+        <div class="impact__showcase">
+            <!-- Vídeo Topo: sem cortes (contain), opacidade 1, e animação de Scale -->
+            <div class="impact__media reveal-scale">
+                <video class="impact__video" id="impact-video" src="./src/assets/motion.mp4" muted playsinline preload="auto"></video>
+            </div>
+            
+            <!-- Copy 1: Flutuando abaixo/esquerda (Destacado no circulo vermelho) -->
+            <div class="impact__point impact__point--left reveal">
+                <h3 class="impact__point-val">75%</h3>
+                <p class="impact__point-text">Credibilidade atrelada<br>ao design do site.</p>
+            </div>
+
+            <!-- Copy 2: Flutuando meio/direita (Destacado no circulo vermelho) -->
+            <div class="impact__point impact__point--right reveal">
+                <h3 class="impact__point-val">2x</h3>
+                <p class="impact__point-text">Mais conversão<br>com alta velocidade.</p>
+            </div>
+        </div>
+
+        <!-- Título principal, centralizado logo abaixo do showcase -->
+        <div class="impact__head reveal">
+            <h2 class="impact__title">POTENCIALIZAMOS<br><span>O SEU NEGÓCIO</span></h2>
+        </div>
     </section>
 
     <!-- JS Modular (ponto de entrada único) -->
