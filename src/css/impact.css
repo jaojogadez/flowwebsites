@@ -67,6 +67,12 @@
     z-index: 10;
 }
 
+.impact__point--top-left {
+    top: 15%;
+    left: 2%;
+    text-align: left;
+}
+
 .impact__point--left {
     bottom: 12%;
     left: 2%;
@@ -164,8 +170,194 @@
     transform: translateY(0);
 }
 
+/* =========================================
+   COMPARAÇÃO E GRÁFICOS (STATS)
+   ========================================= */
+
+.impact__stats-grid {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.impact__stat-card {
+    position: relative;
+    padding: 45px 40px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.3s ease;
+}
+
+.impact__stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.impact__stat-card--bad {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.impact__stat-card--good {
+    background: rgba(0, 98, 255, 0.05);
+    border: 1px solid rgba(0, 98, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 98, 255, 0.08);
+}
+
+/* Badge flutuante sobreposto (A Escolha Certa) */
+.stat-card__badge {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: rgba(0, 98, 255, 0.15);
+    color: var(--accent-blue);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 9999px;
+}
+
+.stat-card__head h4 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: var(--text-main);
+    margin: 0 0 5px;
+    line-height: 1.2;
+}
+
+.stat-card__head p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 85%;
+}
+
+/* Gráfico nativo via CSS */
+.stat-card__graph {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 150px;
+    padding: 0 10px 20px; /* espaco inferior pra borda */
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
+    gap: 15px;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.stat-bar__fill {
+    width: 100%;
+    height: 0; /* Começa oculto pro IntersectionObserver rodar */
+    border-radius: 4px;
+    will-change: height;
+}
+
+/* Cores - Gráfico Ruim */
+.stat-card__graph--bad .stat-bar__fill {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Cores - Gráfico Boom Premium (Glowz) */
+.stat-card__graph--good .stat-bar__fill {
+    background: linear-gradient(180deg, rgba(0, 98, 255, 0.8) 0%, rgba(0, 98, 255, 0) 100%);
+    box-shadow: inset 0 2px 0 #85b0ff, 0 0 20px rgba(0, 98, 255, 0.4);
+}
+
+/* Animação que depende do observer do reveal.js (.revealed) */
+.impact__stat-card.revealed .stat-bar__fill {
+    animation: grow-bar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes grow-bar {
+    0% { height: 0%; }
+    100% { height: var(--h); }
+}
+
+/* Métrica Gigante em Destaque */
+.stat-card__metric {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+}
+
+.stat-card__metric h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--accent-blue);
+    line-height: 1;
+    margin: 0 0 5px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 10px 30px rgba(0, 98, 255, 0.3);
+}
+
+.stat-card__metric span {
+    font-weight: 500;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+/* Checkmarks da lista */
+.stat-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-card__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+}
+
+.stat-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.stat-icon--bad {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.stat-icon--good {
+    color: #00d26a; /* Verdinho check Premium */
+}
+
 /* Responsivo */
 @media (max-width: 900px) {
+    .impact__stats-grid {
+        grid-template-columns: 1fr;
+    }
     .impact__showcase {
         flex-direction: column;
         gap: 30px;
@@ -182,6 +374,14 @@
         inset: auto !important; /* Reseta as direções absolutas */
         text-align: center !important;
     }
+    
+    .stat-card__badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: -15px;
+        align-self: flex-start;
+    }
 }
 
 @media (max-width: 768px) {
@@ -191,6 +391,9 @@
     }
     .impact__title {
         font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+    .impact__stat-card {
+        padding: 30px 20px;
     }
 }
 
