@@ -5,7 +5,7 @@
  */
 
 export function initReveal() {
-    const reveals = document.querySelectorAll('.reveal, .reveal-scale');
+    const reveals = document.querySelectorAll('.reveal, .reveal-scale, .reveal-phones');
 
     if (!reveals.length) return;
 
