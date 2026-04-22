@@ -111,9 +111,10 @@
 /* --- CLASSE REVEAL (Scale em especial pro Video) --- */
 .reveal-scale {
     opacity: 0;
-    /* Começa suavemente menor */
-    transform: scale(0.92);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Começa apenas 2% menor para um bump muito rápido */
+    transform: scale(0.98);
+    will-change: transform, opacity;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-scale.revealed {
     opacity: 1;
@@ -123,8 +124,9 @@
 /* Animação Normal das Copys */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px); /* movimenta menos para aparecer mais rápido */
+    will-change: transform, opacity;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.revealed {
     opacity: 1;

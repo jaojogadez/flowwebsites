@@ -195,6 +195,7 @@
     filter: blur(30px);
     z-index: 0;
     animation: pulse-glow 4s ease-in-out infinite alternate;
+    will-change: transform, opacity;
 }
 
 @keyframes pulse-glow {
@@ -224,21 +225,21 @@
         #000 60%,
         rgba(0,0,0,0.5) 80%,
         transparent 100%);
+    /* O filter drop-shadow no elemento pai causava repaints pesados quando animado, por isso é fixo */
     filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7));
-    /* Animação de entrada */
-    animation: hero-rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    /* Animação de entrada rápida e otimizada (apenas opacity e transform) */
+    animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: transform, opacity;
 }
 
 @keyframes hero-rise {
     from {
         opacity: 0;
         transform: translateY(40px);
-        filter: drop-shadow(0 0px 0px rgba(0,0,0,0));
     }
     to {
         opacity: 1;
         transform: translateY(0);
-        filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7));
     }
 }
 
@@ -267,7 +268,8 @@
 /* ── Copy esquerda ── */
 .hero__content {
     max-width: 340px;
-    animation: fade-up 0.9s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: fade-up 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: transform, opacity;
 }
 
 /* Badge acima do título */
@@ -328,7 +330,8 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 7px;
-    animation: fade-up 0.9s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: fade-up 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: transform, opacity;
 }
 
 .hero__actions-label {

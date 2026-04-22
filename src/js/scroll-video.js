@@ -1,66 +1,34 @@
 /**
  * scroll-video.js
- * Sincroniza o `currentTime` de um elemento <video> com o scroll da seção pai.
+ * Reproduz o vídeo de impacto automaticamente uma única vez
+ * quando ele entra no campo de visão do usuário.
  */
 
 export function initScrollVideo() {
-    const section = document.querySelector('.impact');
     const video = document.getElementById('impact-video');
 
-    if (!section || !video) return;
+    if (!video) return;
 
-    // Em alguns navegadores mobile o 'muted' não permite scrubbing sem user interaction
-    // Certificando q o video tem estado pausado sempre.
-    video.pause();
+    // Garante que não irá iterar mais de uma vez
+    let hasPlayed = false;
 
-    let rafId = null;
-    let targetTime = 0;
-    let actTime = 0;
-
-    // Loop de animação contínuo (Lerp) para scrubber fluído (premium vibe)
-    const renderLoop = () => {
-        if (!isNaN(video.duration) && isFinite(video.duration)) {
-            // Lerp (interpolação linear) para suavizar o scrub do vídeo
-            actTime += (targetTime - actTime) * 0.1;
-            
-            // Impede atualização minúscula q causa overhead
-            if (Math.abs(actTime - video.currentTime) > 0.01) {
-                try {
-                    video.currentTime = actTime;
-                } catch(e) { } // previne erros de state no Safari
-            }
-        }
-        requestAnimationFrame(renderLoop);
-    };
-    
-    requestAnimationFrame(renderLoop);
-
-    const onScroll = () => {
-        if (rafId) return;
-        
-        rafId = requestAnimationFrame(() => {
-            const rect = section.getBoundingClientRect();
-            
-            // Quantidade de pixels rolada 'para dentro' da section
-            const scrolledPx = -rect.top; 
-            const totalScrollablePx = rect.height - window.innerHeight; 
-
-            if (totalScrollablePx > 0) {
-                let progress = scrolledPx / totalScrollablePx;
-                progress = Math.max(0, Math.min(progress, 1));
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasPlayed) {
+                hasPlayed = true;
                 
-                if (video.duration && isFinite(video.duration)) {
-                    targetTime = video.duration * progress;
-                }
-            }
-            
-            rafId = null;
-        });
-    };
+                // Tenta reproduzir o vídeo. Pode falhar se for restrito por data-saving/low-power mode
+                video.play().catch(err => {
+                    console.warn("Auto-play prevenido pelas políticas do navegador.", err);
+                });
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    
-    // Chamada inicial
-    setTimeout(onScroll, 100);
+                // Para de observar o vídeo
+                observer.unobserve(video);
+            }
+        });
+    }, {
+        threshold: 0.2 // Toca quando pelo menos 20% do vídeo estiver na tela
+    });
+
+    observer.observe(video);
 }
