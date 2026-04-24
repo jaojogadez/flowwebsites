@@ -41,6 +41,11 @@
 }
 
 /* Reset básico para aplicação do Design System */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body {
     background-color: var(--bg-deep);
     color: var(--text-main);

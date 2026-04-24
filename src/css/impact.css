@@ -211,7 +211,7 @@
 /* Badge flutuante sobreposto (A Escolha Certa) */
 .stat-card__badge {
     position: absolute;
-    top: 25px;
+    top: 14px;
     right: 30px;
     display: inline-flex;
     align-items: center;
@@ -492,3 +492,12 @@
     }
 }
 
+@media (max-width: 480px) {
+    .reveal-phones.revealed .impact__phone--left {
+    transform: translateX(-13%) scale(0.85) rotate(-7deg); /* 0deg natural */
+}
+
+.reveal-phones.revealed .impact__phone--right {
+    transform: translateX(13%) scale(0.85) rotate(7deg); /* 0deg natural */
+}
+}

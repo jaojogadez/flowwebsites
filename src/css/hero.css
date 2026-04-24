@@ -80,7 +80,7 @@
 /* Linha preenchida (sólida) — topo do hero, aparece na frente */
 .hero__marquee-static {
     position: absolute;
-    top: 64px;        /* logo abaixo da navbar */
+    top: 95px;        /* logo abaixo da navbar */
     left: 0;
     right: 0;
     overflow: hidden;
@@ -113,20 +113,19 @@
     font-family: var(--font-display);
     font-size: clamp(3.5rem, 7.5vw, 6.5rem);
     font-weight: 900;
-    text-transform: uppercase;
     letter-spacing: -0.025em;
+    text-transform: uppercase;
     line-height: 1.1;
-    animation: marquee-ltr 65s linear infinite;
+    animation: marquee-rtl 65s linear infinite;
     /* Texto delineado — premium */
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.10);
+    color:  rgba(255, 255, 255, 0.055);
     user-select: none;
 }
 
 /* Variante preenchida: cor sólida, animação lateral, opacidade reduzida */
 .hero__marquee-track--filled {
-    animation: marquee-ltr 28s linear infinite;
-    color: rgba(255, 255, 255, 0.10);
+    animation: marquee-ltr 40s linear infinite;
+    color: rgba(255, 255, 255, 0.9);
     -webkit-text-stroke: 0;
 }
 
@@ -356,6 +355,7 @@
     text-decoration: none;
     font-family: var(--font-body);
     cursor: pointer;
+    box-sizing: border-box;
     /* Glassmorphism real */
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.09);
@@ -511,7 +511,7 @@
 @media (max-width: 600px) {
 
     .hero__marquee-static { top: 70px; }
-    .hero__marquee-wrap   { top: 22%; }  /* Posicionamento relativo ao hero */
+    .hero__marquee-wrap   { top: auto; bottom: 50vh; }  /* Âncora relativa à base como a imagem */
 
     .hero__marquee-track,
     .hero__marquee-track--filled {
@@ -520,11 +520,11 @@
 
     .hero__image-wrap { padding: 0 8px; }
 
-    /* Mantém o comportamento de centralizar, mas cria espaço topo/base */
+    /* Alinha a imagem à base para eliminar vãos independentemente da altura (como é no desktop) */
     .hero__body {
         flex: 1;
         padding-top: 100px;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
     }
 
@@ -605,14 +605,16 @@
 @media (max-width: 480px) {
 
     .hero__marquee-static { top: 64px; }
-    .hero__marquee-wrap   { top: 20%; }
+    .hero__marquee-wrap   { top: auto; bottom: 50vh; }
 
     .hero__marquee-track,
     .hero__marquee-track--filled {
         font-size: clamp(2rem, 12vw, 2.8rem);
     }
 
-    .hero__image { max-height: 48vh; }
+    .hero__image { 
+        max-height: 48vh;
+     }
 
     .hero__bottom {
         margin-top: -100px;
@@ -642,7 +644,7 @@
 @media (max-width: 360px) {
 
     .hero__marquee-static { top: 60px; }
-    .hero__marquee-wrap   { top: 18%; }
+    .hero__marquee-wrap   { top: auto; bottom: 50vh; }
 
     .hero__marquee-track,
     .hero__marquee-track--filled {
