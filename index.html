@@ -4,18 +4,97 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flow Web Sites – Sites de Alto Padrão</title>
-    <link rel="shortcut icon" href="src/assets/logos/logo-encurtada.png" type="image/x-icon">
-    <meta name="description" content="Flow Web Sites: criamos sites e aplicações web de alto desempenho com design premium de alto padrão para negócios que querem se destacar." />
-    <!-- Google Fonts -->
+
+    <!-- =============================================
+         SEO – Title, Description & Canonical
+         ============================================= -->
+    <title>Flow Web Sites | Criação de Sites Premium e Design de Alto Padrão</title>
+    <meta name="description" content="Flow Web Sites cria sites e aplicações web de alto desempenho com design premium para negócios que querem se destacar no Google, atrair clientes e vender mais. Solicite um orçamento." />
+    <meta name="keywords" content="criação de sites, web design premium, sites profissionais, agência de web design, desenvolvimento web, sites de alto padrão, landing page, Flow Web Sites" />
+    <meta name="author" content="Flow Web Sites" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://flowwebsites.com.br/" />
+
+    <!-- =============================================
+         Open Graph – Compartilhamento Social (Facebook, WhatsApp, LinkedIn)
+         ============================================= -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://flowwebsites.com.br/" />
+    <meta property="og:title" content="Flow Web Sites | Sites Premium que Vendem" />
+    <meta property="og:description" content="Design premium, código limpo e resultados reais. Criamos o site ideal para o seu negócio se destacar no Google e converter mais clientes." />
+    <meta property="og:image" content="https://flowwebsites.com.br/src/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Flow Web Sites" />
+
+    <!-- =============================================
+         Twitter Card
+         ============================================= -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Flow Web Sites | Sites Premium que Vendem" />
+    <meta name="twitter:description" content="Design premium, código limpo e resultados reais. Criamos o site ideal para o seu negócio se destacar no Google." />
+    <meta name="twitter:image" content="https://flowwebsites.com.br/src/assets/og-image.png" />
+
+    <!-- =============================================
+         Favicon
+         ============================================= -->
+    <link rel="shortcut icon" href="src/assets/logos/logo-encurtada.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="src/assets/logos/logo-encurtada.png" />
+
+    <!-- =============================================
+         Performance – Preconnect & Preload
+         ============================================= -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload da imagem hero (maior elemento visível = LCP) -->
+    <link rel="preload" as="image" href="./src/assets/hero.webp" type="image/webp" />
+
+    <!-- =============================================
+         Google Fonts
+         ============================================= -->
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
 
-    <!-- CSS Modular (ponto de entrada único) -->
+    <!-- =============================================
+         CSS Modular (ponto de entrada único)
+         ============================================= -->
     <link rel="stylesheet" href="./src/css/index.css" />
+
+    <!-- =============================================
+         Schema.org – Dados Estruturados (LocalBusiness)
+         Ajuda o Google a exibir rich results / knowledge panel
+         ============================================= -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Flow Web Sites",
+        "description": "Agência especializada em criação de sites e aplicações web de alto padrão com design premium para negócios que querem se destacar no mercado digital.",
+        "url": "https://flowwebsites.com.br",
+        "logo": "https://flowwebsites.com.br/src/assets/logos/logo-cumprida.png",
+        "image": "https://flowwebsites.com.br/src/assets/hero.png",
+        "email": "contato@flowwebsites.com.br",
+        "telephone": "+5500000000000",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "BR"
+        },
+        "sameAs": [
+            "https://instagram.com/flowwebsites",
+            "https://facebook.com/flowwebsites",
+            "https://wa.me/5500000000000"
+        ],
+        "priceRange": "$$",
+        "serviceType": [
+            "Criação de Sites",
+            "Web Design Premium",
+            "Landing Pages",
+            "Desenvolvimento Web"
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -123,11 +202,16 @@
             <!-- Imagem central -->
             <div class="hero__body">
                 <div class="hero__image-wrap">
-                    <img
-                        src="./src/assets/hero.png"
-                        alt="Projeto web desenvolvido pela Flow Web Sites"
-                        class="hero__image"
-                        id="hero-image" />
+                    <picture>
+                        <source srcset="./src/assets/hero.webp" type="image/webp" />
+                        <img
+                            src="./src/assets/hero.png"
+                            alt="Mockup de site premium criado pela Flow Web Sites – design de alto padrão para negócios"
+                            class="hero__image"
+                            id="hero-image"
+                            fetchpriority="high"
+                            decoding="async" />
+                    </picture>
                 </div>
             </div>
 
@@ -198,9 +282,27 @@
         <div class="impact__showcase">
             <!-- Mockups: celular central (phone1), e dois atrás saindo pros lados (phone2 e 3) -->
             <div class="impact__media reveal-phones">
-                <img src="./src/assets/phone2.png" alt="App em funcionamento" class="impact__phone impact__phone--left">
-                <img src="./src/assets/phone3.png" alt="Apresentação do projeto" class="impact__phone impact__phone--right">
-                <img src="./src/assets/phone1.png" alt="Design premium para mobile" class="impact__phone impact__phone--center">
+                <picture>
+                    <source srcset="./src/assets/phone2.webp" type="image/webp" />
+                    <img src="./src/assets/phone2.png"
+                         alt="Site profissional desenvolvido pela Flow Web Sites exibido em smartphone – versão mobile responsiva"
+                         class="impact__phone impact__phone--left"
+                         loading="lazy" decoding="async">
+                </picture>
+                <picture>
+                    <source srcset="./src/assets/phone3.webp" type="image/webp" />
+                    <img src="./src/assets/phone3.png"
+                         alt="Aplicação web de alto desempenho criada pela Flow Web Sites – design responsivo para celular"
+                         class="impact__phone impact__phone--right"
+                         loading="lazy" decoding="async">
+                </picture>
+                <picture>
+                    <source srcset="./src/assets/phone1.webp" type="image/webp" />
+                    <img src="./src/assets/phone1.png"
+                         alt="Design premium para mobile criado pela Flow Web Sites – experiência de alta conversão no celular"
+                         class="impact__phone impact__phone--center"
+                         loading="lazy" decoding="async">
+                </picture>
             </div>
             
             <!-- Copy 1: Flutuando topo/esquerda (Movel/Responsividade) -->
