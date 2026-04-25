@@ -16,6 +16,7 @@ export function initContactModal() {
      */
     function openModal() {
         modal.classList.add('open');
+        document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
         // Foca no primeiro input
         setTimeout(() => {
@@ -29,6 +30,7 @@ export function initContactModal() {
      */
     function closeModal() {
         modal.classList.remove('open');
+        document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
     }
 
