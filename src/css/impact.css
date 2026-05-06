@@ -33,6 +33,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
     z-index: 1;
     perspective: 1000px; /* Ajuda incrivelmente no 3D rendering the transforms no safari */
 }
@@ -40,6 +41,9 @@
 /* Base das imagens dos celulares */
 .impact__phone {
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     height: 100%;
     max-height: 65vh;
     object-fit: contain;
@@ -136,7 +140,7 @@
 /* Celulares de tras iniciam ocultos exatamente atras do celular central */
 .reveal-phones .impact__phone--left,
 .reveal-phones .impact__phone--right {
-    transform: translateX(0) scale(0.9) rotate(0deg);
+    transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
     will-change: transform;
 }
@@ -149,11 +153,11 @@
 
 /* Disparam para os lados (agr sem rotação e mais curtos) */
 .reveal-phones.revealed .impact__phone--left {
-    transform: translateX(-24%) scale(0.85); /* 0deg natural */
+    transform: translate(calc(-50% - 24%), -50%) scale(0.85); /* 0deg natural */
 }
 
 .reveal-phones.revealed .impact__phone--right {
-    transform: translateX(24%) scale(0.85); /* 0deg natural */
+    transform: translate(calc(-50% + 24%), -50%) scale(0.85); /* 0deg natural */
 }
 
 /* Animação Normal das Copys */
@@ -492,12 +496,47 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 680px) {
+    .impact__media {
+        height: 52vh;
+    }
+    .impact__phone {
+        max-height: 36vh;
+    }
+    .impact__phone--center {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    .reveal-phones .impact__phone--left,
+    .reveal-phones .impact__phone--right {
+        transform: translate(-50%, -50%) scale(0.85) rotate(0deg);
+    }
     .reveal-phones.revealed .impact__phone--left {
-    transform: translateX(-13%) scale(0.85) rotate(-7deg); /* 0deg natural */
+        transform: translate(calc(-50% - 16%), -50%) scale(0.72) rotate(-5deg);
+    }
+    .reveal-phones.revealed .impact__phone--right {
+        transform: translate(calc(-50% + 16%), -50%) scale(0.72) rotate(5deg);
+    }
 }
 
-.reveal-phones.revealed .impact__phone--right {
-    transform: translateX(13%) scale(0.85) rotate(7deg); /* 0deg natural */
+@media (max-width: 480px) {
+    .impact__media {
+        height: 45vh;
+    }
+    .impact__phone {
+        max-height: 32vh;
+    }
+    .impact__phone--center {
+        transform: translate(-50%, -50%) scale(0.88);
+    }
+    .reveal-phones .impact__phone--left,
+    .reveal-phones .impact__phone--right {
+        transform: translate(-50%, -50%) scale(0.78) rotate(0deg);
+    }
+    .reveal-phones.revealed .impact__phone--left {
+        transform: translate(calc(-50% - 12%), -50%) scale(0.64) rotate(-6deg);
+    }
+    .reveal-phones.revealed .impact__phone--right {
+        transform: translate(calc(-50% + 12%), -50%) scale(0.64) rotate(6deg);
+    }
 }
 }
