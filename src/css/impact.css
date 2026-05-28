@@ -25,8 +25,9 @@
 
 .impact__media {
     width: 100%;
-    height: 70vh; /* Altura predefinida para os mockups absolutos */
-    max-height: 75vh; 
+    height: 70vh;
+    /* Altura predefinida para os mockups absolutos */
+    max-height: 75vh;
     border-radius: var(--radius-lg);
     background: transparent;
     display: flex;
@@ -35,7 +36,8 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
-    perspective: 1000px; /* Ajuda incrivelmente no 3D rendering the transforms no safari */
+    perspective: 1000px;
+    /* Ajuda incrivelmente no 3D rendering the transforms no safari */
 }
 
 /* Base das imagens dos celulares */
@@ -153,20 +155,24 @@
 
 /* Disparam para os lados (agr sem rotação e mais curtos) */
 .reveal-phones.revealed .impact__phone--left {
-    transform: translate(calc(-50% - 24%), -50%) scale(0.85); /* 0deg natural */
+    transform: translate(calc(-50% - 24%), -50%) scale(0.85);
+    /* 0deg natural */
 }
 
 .reveal-phones.revealed .impact__phone--right {
-    transform: translate(calc(-50% + 24%), -50%) scale(0.85); /* 0deg natural */
+    transform: translate(calc(-50% + 24%), -50%) scale(0.85);
+    /* 0deg natural */
 }
 
 /* Animação Normal das Copys */
 .reveal {
     opacity: 0;
-    transform: translateY(20px); /* movimenta menos para aparecer mais rápido */
+    transform: translateY(20px);
+    /* movimenta menos para aparecer mais rápido */
     will-change: transform, opacity;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
@@ -253,7 +259,8 @@
     align-items: flex-end;
     justify-content: space-between;
     height: 150px;
-    padding: 0 10px 20px; /* espaco inferior pra borda */
+    padding: 0 10px 20px;
+    /* espaco inferior pra borda */
     border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
     gap: 15px;
 }
@@ -271,7 +278,8 @@
 
 .stat-bar__fill {
     width: 100%;
-    height: 0; /* Começa oculto pro IntersectionObserver rodar */
+    height: 0;
+    /* Começa oculto pro IntersectionObserver rodar */
     border-radius: 4px;
     will-change: height;
 }
@@ -295,8 +303,13 @@
 }
 
 @keyframes grow-bar {
-    0% { height: 0%; }
-    100% { height: var(--h); }
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: var(--h);
+    }
 }
 
 /* Métrica Gigante em Destaque */
@@ -351,7 +364,8 @@
 }
 
 .stat-icon--good {
-    color: #00d26a; /* Verdinho check Premium */
+    color: #00d26a;
+    /* Verdinho check Premium */
 }
 
 /* =========================================
@@ -384,17 +398,17 @@
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
-    
+
     /* Gradiente premium */
     background: linear-gradient(135deg, var(--primary-blue) 0%, #0052cc 100%);
     color: #ffffff;
-    
+
     /* Sombra inicial */
-    box-shadow: 
+    box-shadow:
         0 10px 30px rgba(0, 98, 255, 0.3),
         0 0 40px rgba(0, 98, 255, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    
+
     will-change: transform, box-shadow;
 }
 
@@ -409,7 +423,7 @@
 
 .impact__btn-premium:hover {
     transform: translateY(-4px);
-    box-shadow: 
+    box-shadow:
         0 20px 50px rgba(0, 98, 255, 0.4),
         0 0 60px rgba(0, 98, 255, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -450,22 +464,27 @@
     .impact__stats-grid {
         grid-template-columns: 1fr;
     }
+
     .impact__showcase {
         flex-direction: column;
         gap: 30px;
     }
+
     .impact__media {
         height: 50vh;
     }
+
     .impact__phone {
         max-height: 45vh;
     }
+
     .impact__point {
         position: relative;
-        inset: auto !important; /* Reseta as direções absolutas */
+        inset: auto !important;
+        /* Reseta as direções absolutas */
         text-align: center !important;
     }
-    
+
     .stat-card__badge {
         position: relative;
         top: 0;
@@ -480,15 +499,19 @@
         padding: 60px 20px;
         gap: 40px;
     }
+
     .impact__title {
         font-size: clamp(1.8rem, 7vw, 2.5rem);
     }
+
     .impact__stat-card {
         padding: 30px 20px;
     }
+
     .impact__cta {
         margin-top: 30px;
     }
+
     .impact__btn-premium {
         width: 100%;
         padding: 14px 30px;
@@ -498,45 +521,54 @@
 
 @media (max-width: 680px) {
     .impact__media {
-        height: 52vh;
+        height: 62vh;
     }
+
     .impact__phone {
-        max-height: 36vh;
+        max-height: 54vh;
     }
+
     .impact__phone--center {
-        transform: translate(-50%, -50%) scale(0.95);
+        transform: translate(-50%, -50%) scale(1);
     }
+
     .reveal-phones .impact__phone--left,
     .reveal-phones .impact__phone--right {
-        transform: translate(-50%, -50%) scale(0.85) rotate(0deg);
+        transform: translate(-50%, -50%) scale(0.9) rotate(0deg);
     }
+
     .reveal-phones.revealed .impact__phone--left {
-        transform: translate(calc(-50% - 16%), -50%) scale(0.72) rotate(-5deg);
+        transform: translate(calc(-50% - 30%), -50%) scale(0.82) rotate(-5deg);
     }
+
     .reveal-phones.revealed .impact__phone--right {
-        transform: translate(calc(-50% + 16%), -50%) scale(0.72) rotate(5deg);
+        transform: translate(calc(-50% + 30%), -50%) scale(0.82) rotate(5deg);
     }
 }
 
 @media (max-width: 480px) {
     .impact__media {
-        height: 45vh;
+        height: 58vh;
     }
+
     .impact__phone {
-        max-height: 32vh;
+        max-height: 50vh;
     }
+
     .impact__phone--center {
-        transform: translate(-50%, -50%) scale(0.88);
+        transform: translate(-50%, -50%) scale(1);
     }
+
     .reveal-phones .impact__phone--left,
     .reveal-phones .impact__phone--right {
-        transform: translate(-50%, -50%) scale(0.78) rotate(0deg);
+        transform: translate(-50%, -50%) scale(0.88) rotate(0deg);
     }
+
     .reveal-phones.revealed .impact__phone--left {
-        transform: translate(calc(-50% - 12%), -50%) scale(0.64) rotate(-6deg);
+        transform: translate(calc(-50% - 15%), -50%) scale(0.78) rotate(-6deg);
     }
+
     .reveal-phones.revealed .impact__phone--right {
-        transform: translate(calc(-50% + 12%), -50%) scale(0.64) rotate(6deg);
+        transform: translate(calc(-50% + 15%), -50%) scale(0.78) rotate(6deg);
     }
-}
 }
